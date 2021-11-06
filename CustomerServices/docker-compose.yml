@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  microserviceeducation:
+    image: ${DOCKER_REGISTRY-}microserviceeducation
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    ports:
+    - 12433:1433
+    environment:
+      SA_PASSWORD: Your_password123
+      ACCEPT_EULA: Y

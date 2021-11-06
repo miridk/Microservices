@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchServiceName": "microserviceeducation",
+      "serviceActions": {
+        "microserviceeducation": "StartDebugging",
+        "db": "StartWithoutDebugging"
+      },
+      "composeLaunchAction": "LaunchBrowser",
+      "commandVersion": "1.0",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger"
+    },
+    "SQL": {
+      "commandName": "DockerCompose",
+      "serviceActions": {
+        "microserviceeducation": "StartDebugging",
+        "db": "StartWithoutDebugging"
+      },
+      "commandVersion": "1.0"
+    }
+  }
+}
