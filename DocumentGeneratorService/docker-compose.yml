@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  microserviceedudocumentgenerator:
+    image: ${DOCKER_REGISTRY-}microserviceedudocumentgenerator
+    build:
+      context: .
+      dockerfile: MicroServiceEduDocumentGenerator/Dockerfile

@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  microserviceeducation:
+    image: microserviceeducation
+    ports:
+     - "3001:80"
+    build:
+      context: ./CustomerService/
+      dockerfile: Dockerfile
+      
+  webapplication1:
+    image: webapplication1
+    ports:
+    - "3002:80"
+    container_name: orders
+    build:
+      context: ./OrderService/
+      dockerfile: Dockerfile
+
+  productcatalog:
+    image: productcatalog
+    ports:
+    - "3003:80"
+    container_name: product
+    build:
+      context: ./ProductCatalogService/
+      dockerfile: Dockerfile
+
+  microserviceedudocumentgenerator:
+    image: microserviceedudocumentgenerator
+    ports:
+    - "3004:80"
+    container_name: documentgenerator
+    build:
+      context: ./DocumentGeneratorService/
+      dockerfile: ./MicroServiceEduDocumentGenerator/Dockerfile     
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    ports:
+    - 12433:1433
+    environment:
+      SA_PASSWORD: Your_password123
+      ACCEPT_EULA: Y

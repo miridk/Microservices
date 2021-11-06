@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "productcatalog.fullname" . }}
+  labels:
+    app: {{ template "productcatalog.name" . }}
+    chart: {{ template "productcatalog.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "productcatalog.name" . }}
+    release: {{ .Release.Name }}
